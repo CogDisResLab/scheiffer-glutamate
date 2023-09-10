@@ -36,10 +36,12 @@ After applying the *Filtering Parameters* for this group comparison, only *`r le
 
 ```{r fig.height=8, fig.width=6}
 #| label: heatmapInd{{random}}
-#| fig-cap: "Violin plot of two groups"
+#| fig.width: 6
+#| fig.height: 8
+#| fig-cap: "Random Caption"
 
 # generates a heatmap using the selected groups and peptides
-krsa_heatmap(data_modeled$normalized, significant_peptides$meanLFC$`0.2`, groups = c("{{case}}", "{{ctrl}}"), scale = "row", width = 6, height = 8)
+krsa_heatmap(data_modeled$normalized, significant_peptides$meanLFC$`0.2`, groups = c("{{case}}", "{{ctrl}}"), scale = "row")
 
 ```
 
@@ -139,7 +141,7 @@ AvgZTable2 |>
 
 
 # save file
-#AvgZTable %>% write_delim("withinChip_KRSA_Table_comp1.txt", delim = "\t")
+AvgZTable2 %>% write_csv("results/withinChip_KRSA_Table_{{case}}_{{ctrl}}.csv")
 
 # Extract top kinases based on abs(Z) score
 kinases_hits <- AvgZTable2 |> 
